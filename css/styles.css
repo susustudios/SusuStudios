@@ -1,0 +1,552 @@
+/* ==================================*/
+/* start of basic stuff*/
+*,
+*::before
+*::after {
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    font-family: 'Inter', sans-serif;
+    /*get rid of horizontal scrolling*/
+    overflow-x:hidden;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    /*for footer and nav to stay at their intended places*/
+    display: flex;
+    flex-direction: column;
+}
+/*just to make sure something funny doesn't happen to the pics */
+img {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+}
+main {
+    padding: 0em;
+    margin: 0 0;
+    /*for footer and nav to stay at their intended places*/
+    flex: 1;
+}
+.section2_content, .section3_content {
+    margin: 0 2em;
+}
+
+
+
+/*START OF ROOT*/
+:root {
+    --fw_reg: 500;
+    --fw_bold: 800;
+    --fw_extrabold: 900;
+    
+    --blue: #74D7DA;
+    --lightpink: #FF90B4;
+    --darkpink: #DF5E88;
+    --black: #343030;
+
+    --fs_h1: 6rem;
+    --fs_h2: 4rem;
+    --fs_h3: 1.5rem;
+    --fs_h4: 1.5rem; /*this is the normal text font*/
+}
+
+@media screen and (max-width: 600px) {
+    :root {
+        --fs_h1: 2.25rem;
+        --fs_h2: 1.875rem;
+        --fs_h3: 1rem;
+        --fs_h4: 1rem;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    :root {
+        --fs_h1: 2rem;
+        --fs_h2: 1rem;
+        --fs_h3: 0.75rem;
+        --fs_h4: 0.75rem;
+    }
+}
+/*END OF ROOT*/
+
+
+
+/* START OF FONT STUFF */
+h1,
+h2,
+h3 {
+    line-height: 1;
+}
+h1 {
+    font-size: var(--fs_h1);
+    font-weight: var(--fw_extrabold);
+}
+h2 {
+    font-size: var(--fs_h2);
+    font-weight: var(--fw_bold);
+}
+h3 {
+    font-size: var(--fs_h3);
+    font-weight: var(--fw_reg);
+}
+h4 {
+    font-size: var(--fs_h4);
+    font-weight: var(--fw_reg);
+}
+
+
+/* END OF FONT STUFF*/
+
+/* end of basic stuff*/
+/*===================================================================================*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*===================================================================================*/
+/*START OF NAVIGATION*/
+nav {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    background-color: var(--darkpink);
+}
+.nav_logo{
+    flex: 1;
+}
+.nav_logo img {
+    max-width: 4rem;
+    padding: 1rem;
+
+}
+nav ul {
+    width: auto;
+    margin: 0;
+    text-align: center;
+    padding-right: 6rem;
+}
+nav li {
+    display: inline-block;
+    padding: 0 4rem;
+}
+nav a {
+    font-size: var(--fs_h4);
+    color: white;
+    text-decoration: none;
+    /*this is for the animated slide on the bottom*/
+    position: relative;
+}
+nav a.currentpage {
+    color: var(--blue);
+}
+/*this is the thing that is going to make the slide thing move*/
+nav a::before {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--blue);
+    top: 2rem;
+    width: 0;
+    position: absolute;
+    transition: all ease-in-out 250ms;
+}
+nav a:hover::before {
+    width: 100%;
+}
+nav a:hover {
+    color: var(--blue);
+}
+/*tablet screen settings*/
+@media screen and (max-width: 780px) {
+    nav li {
+        padding: 1.5em;
+    }
+}
+/*phone screen settings*/
+@media screen and (max-width: 500px) {
+    nav li {
+        padding: 0.5rem;
+    }
+    nav a::before {
+        top: 1.5rem;
+    }
+    nav ul {
+        padding-right: 1rem;
+    }
+}
+
+/* END OF NAVIGATION*/
+/*===================================================================================*/
+
+
+
+
+
+
+
+
+
+/*===================================================================================*/
+/* NOW STARTING FOOTER */
+footer {
+    background-color: var(--darkpink);
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+.footer_content {
+    display: inline-block;
+}
+.footer_text{
+    color: white;
+    text-align: center;
+    margin: 0.5rem;
+}
+.footer_icons {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 2rem;
+    z-index: 100;
+}
+.footer_icons a {
+    padding: 0 0.9rem;
+    z-index: 100;
+}
+.footer_content {
+    grid-row: 1;
+    grid-column: 1;
+}
+.footer_background {
+    height: 100%;
+    width: auto;
+
+    grid-row: 1;
+    grid-column: 1;
+}
+.footer_background img {
+    margin: auto;
+}
+/* END OF FOOTER */
+/*===================================================================================*/
+
+
+
+
+/*neomorphism thing*/
+.container {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.container .card {
+    display: grid;
+    place-items: center;
+    position: relative;
+    max-width: 100%;
+    height: auto;
+    width: auto;
+    background: rgb(255, 255, 255);
+    margin: 20px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+
+    border-radius: 20px;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(6px);
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    border-left: 1px solid rgba(255, 255, 255, 0.5);
+}
+.container .card .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: 0.5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container .card:hover .content {
+    opacity: 1;
+    transform: scale(1.1);
+}
+.imgbx {
+    position: relative;
+    justify-self: center;
+    align-self: center;
+}
+.contentbc {
+    transform: initial;
+    padding: 1em;
+    text-align: center;
+    justify-self: center;
+    align-self: center;
+}
+.contentbc h1 {
+    color: white;
+}
+/*END OF NEOMORPHISM*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*===================================================================================*/
+/* NOW STARTING SECTION1 */
+.section1 {
+    background-color: var(--darkpink);
+    margin: 0 0;
+    margin-top: -1rem;
+    z-index: -100;
+    padding: 0;
+}
+.section1_content {
+    display: grid;
+    grid-template-columns: 65% 35%;
+    grid-template-rows: 1fr;
+    place-items: center;
+}
+.section1_content .section1_text {
+    color: white;
+    margin-left: 6rem;
+    margin-top: 6rem;
+    margin-bottom: 2rem;
+    max-width: 50rem;
+    grid-row: 1;
+    grid-column: 1/2;
+}
+.section1_text h1, .section1_text h4{
+    padding: 0.5rem 0;
+    margin: 0;
+}
+.section1_background {
+    grid-row: 1;
+    grid-column: 1/3;
+    width: auto;
+    height: 100%;
+}
+.section1_pictures {
+    padding: 2rem;
+    grid-row: 1;
+    grid-column: 2/3;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+.section1_pictures .wwdp_img {
+    grid-row: 1/3;
+    grid-column: 1/3;
+}
+.section1_pictures .bb_img {
+    grid-row: 2/4;
+    grid-column: 2/4;
+    z-index: 2;
+}
+
+@media screen and (max-width: 800px) {
+    .section1_content {
+        align-items: center;
+        grid-template-columns: 100%;
+        grid-template-rows: 65% 35%;
+    }
+    .section1_content .section1_text {
+        text-align: center;
+        margin-left: 0;
+        margin-top: 0;
+    }
+    .section1_pictures {
+        grid-row: 2/3;
+        grid-column: 1;
+    }
+    .section1_text {
+        grid-row: 1;
+        grid-column: 1/2;
+        width: 80%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+/*===================================================================================*/
+/* NOW STARTING SECTION2 */
+.section2_content {
+    padding: 2em 0;
+    width: 85%;
+    margin: auto;
+}
+.section2_text {
+    color: var(--blue);
+    text-align: center;
+}
+.section2 {
+    margin: 4em 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*===================================================================================*/
+/* NOW STARTING SECTION3 */
+.section3 {
+    margin: 4em 0;
+}
+.section3_content {
+    display: flex;
+    margin: auto;
+    padding: 2em 0;
+    width: 85%;
+    align-items: center;
+}
+.section3_text {
+    color: var(--blue);
+    margin-left: 3rem;
+}
+.section3_pictures {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 100%;
+}
+.section3_pictures .pinksquare {
+    content: "";
+    width: 464px;
+    height: 464px;
+    background-color: var(--lightpink);
+    border-radius: 15px;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2);
+
+    grid-row: 1;
+    grid-column: 1;
+    z-index: -100;
+    align-self: end;
+    justify-self: center;
+}
+.section3_pictures img {
+    grid-row: 1;
+    grid-column: 1;
+    z-index: 100;
+    align-self: center;
+    justify-self: center;
+    margin-bottom: 1rem;
+}
+@media screen and (max-width: 800px) {
+    .section3_content {
+        flex-direction: column;
+        align-items: center;
+    }
+    .section3_pictures {
+        width: 80%;
+        height: auto;
+    }
+    .section3_text {
+        text-align: center;
+        margin: 2em;
+    }
+    .section3_pictures .pinksquare {
+        height: 224px;
+        width: 224px;
+    }
+    .section3_pictures img {
+        height: 286px;
+        width: auto;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*===================================================================================*/
+/* NOW STARTING SECTIONs WITH TRIANGLE */
+.trianglefooter {
+    margin-bottom: -2px;
+    width: 100%;
+    height: auto;
+}
+.trianglesection1 {
+    margin-top: -1px;
+    width: 100%;
+    height: auto;
+}
